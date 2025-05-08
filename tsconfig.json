@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "module": "esnext",
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "composite": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "useDefineForClassFields": true,
+    "preserveSymlinks": true,
+    "ignoreDeprecations": "5.0",
+    "paths": {
+      "@/*": ["./*"]
+    },
+    "types": [
+      "node",
+      "cypress",
+      "jest",
+      "cypress-axe",
+      "@testing-library/cypress"
+    ]
+  },
+  "include": [
+    "./src/**/*",
+    "./config/jest/**/*",
+    "./cypress/**/*",
+    "./src/**/*.json"
+  ]
+}

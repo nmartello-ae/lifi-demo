@@ -1,0 +1,5 @@
+coverage
+build
+public
+dist
+.nyc_output

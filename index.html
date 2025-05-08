@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="version" content="%VITE_APP_VERSION%" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>Lift Dollar Swap</title>
+    <script type="module">
+      globalThis.APP_VERSION = import.meta.env.VITE_APP_VERSION;
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/index.tsx"></script>
+  </body>
+</html>
