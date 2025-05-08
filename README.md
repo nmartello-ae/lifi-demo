@@ -11,6 +11,10 @@ We use yarn workspaces for dependency management. Running `yarn install` under `
 1. Run `yarn start`.
 2. Open in your Browser `http://localhost:3009/`.
 
+## LiFi widget playground
+1. http://localhost:3009/inside-ledger-dapp: this demo use an iframe connector
+2. http://localhost:3009/ledger-iframe-embed is embedded inside an iFrame using the same component of point 1.
+
 ## Running Tests
 
 We use [Jest](https://jestjs.io/) & [React Testing library](https://testing-library.com/docs/react-testing-library/intro/) for unit testing. To compile the code and run all unit tests, use the following command:
