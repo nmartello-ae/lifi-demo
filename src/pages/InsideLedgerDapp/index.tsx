@@ -1,8 +1,9 @@
 import { LiFiWidget } from "@lifi/widget";
-import { IFrameEthereumProvider } from "@ledgerhq/iframe-provider";
-import { WagmiProvider, createConfig } from "wagmi";
+import { WagmiProvider } from "wagmi";
+import { createConfig } from "wagmi";
+import { injected } from "wagmi/connectors";
 import { mainnet } from "wagmi/chains";
-import { custom, EIP1193Provider } from "viem";
+import { custom } from "viem";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import clsx from "clsx";
 import { ArrowPathIcon } from "@heroicons/react/20/solid";
@@ -10,27 +11,33 @@ import { ArrowPathIcon } from "@heroicons/react/20/solid";
 import { INTEGRATOR_NAME, widgetConfig } from "@/config/widgetConfig";
 
 import Liftdollar from "@/assets/liftdollar.svg?react";
+import { LedgerLiveEthereumProvider } from "./provider";
 
 const queryClient = new QueryClient();
-const ledgerProvider = new IFrameEthereumProvider({
-  timeoutMilliseconds: 60000,
-  targetOrigin: window.location.origin,
-});
 
-const wagmiConfig = createConfig({
-  // eslint-disable-next-line
-  // @ts-ignore
+const provider = new LedgerLiveEthereumProvider();
+
+export const config = createConfig({
   chains: [mainnet],
+  connectors: [
+    injected({
+      target() {
+        return {
+          id: "some random id, see docs",
+          name: "some random name, see docs",
+          provider: provider,
+        };
+      },
+    }),
+  ],
   transports: {
-    // eslint-disable-next-line
-    // @ts-ignore
-    [mainnet.id]: custom(ledgerProvider as unknown as EIP1193Provider),
+    [mainnet.id]: custom(provider),
   },
 });
 
 export const InsideLedgerDapp = () => (
   <QueryClientProvider client={queryClient}>
-    <WagmiProvider config={wagmiConfig}>
+    <WagmiProvider config={config}>
       <div className="flex h-screen w-full items-center justify-center bg-white">
         <div
           className={clsx(
